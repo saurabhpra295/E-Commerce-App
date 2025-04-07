@@ -15,6 +15,7 @@ const Navbar = () => {
     dispatch(setSearch(e.target.value)); 
   };
 
+  const wishlistItems = useSelector((state) => state.wishlist);
   const cartItems = useSelector((state) => state.cart);
 
   return (
@@ -58,6 +59,10 @@ const Navbar = () => {
         
         <Link href="/wishlist" className="text-white hover:text-gray-300 relative">
           <FaHeart />
+          {wishlistItems.length > 0 && (
+          <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">
+            {wishlistItems.length}
+          </span>)}
         </Link>
 
         <Link href="/cart" className="text-white hover:text-gray-300 relative">
