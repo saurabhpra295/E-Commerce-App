@@ -4,6 +4,7 @@ import { setSearch } from "../redux/productsSlice";
 import Link from "next/link";
 import { FaShoppingCart, FaHeart, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
+
 const Navbar = () => {
   const dispatch = useDispatch();
   const { filters , filteredItems } = useSelector((state) => state.products);
@@ -19,8 +20,14 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 p-4 flex justify-between items-center">
       <div className="text-white text-lg font-bold">
-        <Link href="/">Saurabh's E-Commerce</Link>
+        <Link href="/">Saurabh E-Commerce</Link>
+        
       </div>
+
+      <div>
+        <Link href="/Homepage">Home</Link>
+      </div>
+
 
       <div className="flex items-center space-x-4">
         
@@ -70,6 +77,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    
   );
 };
 

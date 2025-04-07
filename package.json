@@ -2,7 +2,6 @@
   "name": "e-commerce-app",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -24,5 +23,9 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

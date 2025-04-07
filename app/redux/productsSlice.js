@@ -2,6 +2,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// export const fetchProducts = createAsyncThunk(
+//   'products/fetchProducts',
+//   async () => {
+//     const response = await fetch('https://dummyapi.com/products');
+//     return response.json();
+//   }
+// );
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -38,6 +46,25 @@ const productsSlice = createSlice({
       state.filters.category = action.payload;
     },
   },
+
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(fetchProducts.pending, (state) => {
+  //       // state.status = 'loading';
+  //       state.loading = true;
+  //     })
+  //     .addCase(fetchProducts.fulfilled, (state, action) => {
+  //       // state.status = 'succeeded';
+  //       state.loading = false;
+  //       state.items = action.payload;
+  //     })
+  //     .addCase(fetchProducts.rejected, (state, action) => {
+  //       // state.status = 'failed';
+  //       state.loading = false;
+  //       state.error = action.error.message;
+  //     });
+
+  // },
 });
 
 export const {
@@ -54,6 +81,17 @@ export const fetchProducts = (currentPage = 1) => async (dispatch) => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}?page=${currentPage}&limit=10`);
     dispatch(fetchProductsSuccess(response.data.products));
     return response.data.totalPages; 
+  } catch (error) {
+    dispatch(fetchProductsFailure(error.message));
+  }
+};
+
+export const fetchProductsbyid = (id) => async (dispatch) => {
+  dispatch(fetchProductsStart());
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/${id}`);
+    dispatch(fetchProductsSuccess(response.data));
+    return response.data; 
   } catch (error) {
     dispatch(fetchProductsFailure(error.message));
   }

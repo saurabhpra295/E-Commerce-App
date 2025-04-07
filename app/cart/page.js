@@ -21,6 +21,8 @@ const CartPage = () => {
         <ul>
           {cartItems.map(item => (
             <li key={item.id} className="flex justify-between items-center border-b py-2">
+              <img src={item.images[0]} alt={item.title} className="w-16 h-16 object-cover mr-4" />
+              <span>{item.rating}</span>
               <span>{item.title}</span>
               <span>${item.price} x {item.quantity}</span>
               <button onClick={() => handleRemove(item.id)} className="text-red-500">Remove</button>

@@ -73,7 +73,7 @@ const ProductsPage = () => {
   
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
-  const [priceRange, setPriceRange] = useState([0, 100]); 
+  const [priceRange, setPriceRange] = useState([0, 50]); 
 
   useEffect(() => {
     const page = Number(new URLSearchParams(window.location.search).get('page')) || 1;
@@ -131,7 +131,7 @@ const ProductsPage = () => {
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <Link key={product.id} href={`/products/${product.id}`} className="border p-4 rounded">
-              <img src={product.image} alt={product.title} className="w-full h-48 object-cover" />
+              <img src={product.images} alt={product.title} className="w-full h-48 object-cover" />
               <h3 className="text-lg font-bold">{product.title}</h3>
               <p>${product.price}</p>
               <p>${product.category}</p>
